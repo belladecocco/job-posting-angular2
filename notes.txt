@@ -1,0 +1,48 @@
+>>>to add new component: 
+-create a new file with NAME.component.ts
+-the file should include: 
+
+import {Component} from '@angular/core';
+
+@Component({
+    selector: 'name-of-component', /*indicates an html tag*/
+    template: '<h2>html of the component</h2>'
+})
+export class blogPostComponent {}
+
+-next, add import line to app.module.ts
+import {NAMEComponent} from './NAME.component';
+
+-add NAME to declarations array under @ NgModule
+
+>>>to repeat class attributes write, within a li tag: *ngFor='let X of Xs'
+then put {{X}} in between the li tag
+
+>>>adding directives: make new file: NAME.directive.ts
+should include: 
+
+import {Directive, ElementRef, Renderer} from '@angular/core';
+
+@Directive({
+    selector: '[NAME]'
+    host: {
+        '(focus)': 'onFocus()', 
+        '(blur)': 'onBlur()'
+    }
+})
+
+export class NAMEDirective {
+    constructor(private el: ElementREf, private renderer: Renderer) {
+
+    }
+    onFocus(){
+        this.renderer.setElementStyle(this.el, 'width', '200');
+    }
+    onBlur(){
+        this.renderer.setElementStyle(this.el, 'width', '120');
+    }
+
+}
+-also add the import line and the directives: [] to the component.ts
+
+>>>services require injectables: import line and an @Injectables line (it can be empty)
