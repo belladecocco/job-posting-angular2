@@ -2,6 +2,7 @@
     <li *ngFor="let post of posts">
         {{post.title}}|{{post.description}}|{{post.postID}}
         <button (click)=saveJob(post)>Save Job</button>
+        <button (click)=deletePost(post)>Delete Job</button>
     </li>
 </ul>
 <div>

@@ -44,4 +44,14 @@ export class JobPostComponent {
             this.posts.push(newPost);
         });
     };
+    deletePost(post: JobPost) {
+        this.jobPostService.deletePost({jobID: post.jobID}).subscribe(jobData => {
+            console.log('Deleting job');
+            console.log(jobData);
+            let deletedPost = this.posts.findIndex(post => post.jobID == post.jobID);
+            if (deletedPost > (-1)) {
+              this.posts.splice(deletedPost, 1);   
+            };
+        });
+    };
 }
